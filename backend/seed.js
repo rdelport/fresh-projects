@@ -8,7 +8,7 @@ const sampleProperty = {
   address: '456 Elm Street, Sampletown, USA',
   thumbnail: 'https://via.placeholder.com/300x200?text=House+Thumbnail',
   propertySize: '2800 sqft',
-  floorplanImage: 'https://via.placeholder.com/600x400?text=Floorplan',
+  floorplanImage: 'floorplan.jpg',
   rooms: [
     {
       name: 'Living Room',
@@ -40,6 +40,7 @@ const sampleProperty = {
 
 async function seed() {
     try {
+        await db.connect();
         await Property.deleteMany({});
         const property = new Property(sampleProperty);
         await property.save();

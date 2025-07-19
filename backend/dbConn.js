@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const mongoUrl = process.env.MONGODB_URI || 'mongodb://admin:password@mongodb:27017/freshdb?authSource=admin';
 
-async function connectDB() {
+async function connect() {
     try {
         await mongoose.connect(mongoUrl);
         console.log('MongoDB connected successfully!');
@@ -12,8 +12,12 @@ async function connectDB() {
 }
 
 function disconnect() {
-    mongoose.connection.close(() => {
-        console.log('MongoDB connection closed');
+    mongoose.connection.close()
+    .then(() => {
+        console.log('Mongoose connection closed.');
+    })
+    .catch((err) => {
+        console.error('Error closing connection:', err);
     });
 }
 
@@ -29,13 +33,5 @@ mongoose.connection.on('disconnected', () => {
     console.log('Mongoose default connection disconnected');
 });
 
-process.on('SIGINT', () => {
-    mongoose.connection.close(() => {
-    console.log('Mongoose default connection disconnected through app termination');
-    process.exit(0);
-    });
-});
-
-connectDB();
-
-module.exports = dbConnection
+exports = { connect, disconnect };
+module.exports = { connect, disconnect };
