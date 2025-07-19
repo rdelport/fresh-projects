@@ -1,0 +1,8 @@
+<div class="card">
+  <h1>{{ property.title }}</h1>
+  <p>{{ property.description }}</p>
+  <p><strong>Price:</strong> ${{ property.price }}</p>
+  <p><strong>Address:</strong> {{ property.address }}</p>
+  <p><strong>Size:</strong> {{ property.propertySize }}</p>
+  <img [src]="property.thumbnail" alt="Thumbnail" width="300" />
+</div>

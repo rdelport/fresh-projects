@@ -1,0 +1,12 @@
+<div class="floorplan">
+  <img [src]="imageUrl" usemap="#roommap" alt="Floorplan" width="600" />
+  <map name="roommap">
+    <area *ngFor="let room of rooms"
+          [attr.coords]="getCoords(room)"
+          shape="rect"
+          [attr.alt]="room.name"
+          (mouseenter)="hoveredRoom.set(room.name)"
+          (mouseleave)="hoveredRoom.set(null)"
+          (click)="onClick(room)" />
+  </map>
+</div>

@@ -1,0 +1,7 @@
+<div *ngIf="property$() as property">
+  <app-card [property]="property"></app-card>
+  <app-floorplan [rooms]="property.rooms" [imageUrl]="property.floorplanImage" (roomSelected)="onRoomSelect($event)"></app-floorplan>
+</div>
+<div *ngIf="selectedRoom$() as room">
+  <app-room [room]="room"></app-room>
+</div>
