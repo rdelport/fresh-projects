@@ -1,1 +1,178 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Coastal Villa Design System */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@layer base {
+  :root {
+    /* Coastal Color Palette */
+    --background: 210 50% 98%;
+    --foreground: 215 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+
+    /* Ocean Blues */
+    --primary: 205 86% 25%;
+    --primary-foreground: 210 50% 98%;
+    --primary-light: 205 86% 35%;
+    --primary-glow: 205 86% 45%;
+
+    /* Sandy Neutrals */
+    --secondary: 40 30% 95%;
+    --secondary-foreground: 215 25% 15%;
+
+    --muted: 40 20% 92%;
+    --muted-foreground: 215 15% 45%;
+
+    /* Coastal Accent */
+    --accent: 190 85% 85%;
+    --accent-foreground: 215 25% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+       --border: 40 15% 88%;
+    --input: 40 15% 88%;
+    --ring: 205 86% 25%;
+
+    /* Design System Tokens */
+    --radius: 0.75rem;
+
+    /* Custom Gradients */
+    --gradient-ocean: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-sand: linear-gradient(180deg, hsl(var(--background)), hsl(var(--secondary)));
+    --gradient-sky: linear-gradient(to right, hsl(205 86% 85%), hsl(190 85% 90%));
+
+    /* Shadows */
+    --shadow-ocean: 0 10px 30px -10px hsl(var(--primary) / 0.2);
+    --shadow-elegant: 0 20px 40px -10px hsl(215 25% 15% / 0.1);
+
+    /* Typography */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  /* * {
+    @apply border-border;
+  } */
+
+  /* body {
+    @apply bg-background text-foreground font-body;
+  } */
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+@layer components {
+  .gradient-ocean {
+    background: var(--gradient-ocean);
+  }
+
+  .gradient-sand {
+    background: var(--gradient-sand);
+  }
+
+  .gradient-sky {
+    background: var(--gradient-sky);
+  }
+
+  .shadow-ocean {
+    box-shadow: var(--shadow-ocean);
+  }
+
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+
+  .villa-hero {
+    @apply bg-gradient-to-br from-blue-50 via-white to-blue-50;
+  }
+
+  .room-card {
+    @apply bg-card border border-border rounded-lg p-6 shadow-elegant transition-smooth hover:shadow-ocean hover:-translate-y-1;
+  }
+
+  .floor-plan-area {
+    @apply cursor-pointer transition-smooth hover:opacity-80;
+  }
+
+  .price-badge {
+    @apply gradient-ocean text-primary-foreground px-6 py-3 rounded-full font-semibold text-lg shadow-ocean;
+  }
+}
