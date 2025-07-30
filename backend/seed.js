@@ -2,38 +2,77 @@ const db = require('./dbConn');
 const Property = require('./models/Property');
 
 const sampleProperty = {
-  title: 'Elegant Family Home',
-  shortDescription: 'Beautiful 3-bedroom home with modern finishes and large backyard.',
-  price: 520000,
-  address: '456 Elm Street, Sampletown, USA',
-  thumbnail: 'https://via.placeholder.com/300x200?text=House+Thumbnail',
-  propertySize: '2800 sqft',
+  title: 'Oceanfront Villa',
+  description: 'Discover luxury living at its finest in this stunning single-story beachfront villa. With panoramic ocean views, modern amenities, and direct beach access, this property offers the perfect blend of comfort and coastal elegance. Wake up to the sound of waves and enjoy spectacular sunsets from your private terrace.',
+  price: '£2,450,000',
+  address: '123 Coastal Drive, Brighton Beach, BN1 2AB',
+  image: 'villa-exterior.jpg',
+  bedrooms: 3,
+  bathrooms: 2,
+  size: 2800,
   floorplanImage: 'floorplan.jpg',
+  features: [
+    'Ocean views',
+    'Private terrace',
+    'Modern kitchen with island',
+    'Open-plan living area',
+    'Direct beach access', 
+  ],
   rooms: [
     {
+      id: 'living-room',
       name: 'Living Room',
       description: 'Spacious area with natural light and modern furnishings.',
       photos: [
-        'https://via.placeholder.com/200x150?text=LivingRoom1',
-        'https://via.placeholder.com/200x150?text=LivingRoom2'
+        'living-room-1.jpg',
+        'living-room-2.jpg',
+        'living-room-3.jpg'
       ],
-      coordinates: { x: 50, y: 60, width: 100, height: 80 }
+      coordinates: { x: 15, y: 20, width: 35, height: 25 }
     },
     {
+      id: 'kitchen',
       name: 'Kitchen',
       description: 'Fully equipped kitchen with stainless steel appliances.',
       photos: [
-        'https://via.placeholder.com/200x150?text=Kitchen1'
+        'kitchen-1.jpg',
+        'kitchen-2.jpg',
+        'kitchen-3.jpg'
       ],
-      coordinates: { x: 200, y: 60, width: 100, height: 80 }
+      coordinates: { x: 55, y: 20, width: 25, height: 20 }
     },
     {
+      id: 'bedroom',
       name: 'Bedroom',
       description: 'Cozy bedroom with ensuite and walk-in closet.',
       photos: [
-        'https://via.placeholder.com/200x150?text=Bedroom1'
+        'bedroom-1.jpg',
+        'bedroom-2.jpg',
+        'bedroom-3.jpg'
       ],
-      coordinates: { x: 350, y: 60, width: 100, height: 80 }
+      coordinates: { x: 15, y: 55, width: 30, height: 25 }
+    },
+    {
+      id: 'guest-bedroom',
+      name: 'Guest Bedroom',
+      description: 'Comfortable guest room with ensuite bathroom.',
+      photos: [
+        'guest-1.jpg',
+        'guest-2.jpg',
+        'guest-3.jpg'
+      ],
+      coordinates: { x: 55, y: 55, width: 25, height: 20 }
+    },
+    {
+      id: 'outdoor',
+      name: 'Outdoor Area',
+      description: 'Spacious outdoor area with seating and ocean views.',
+      photos: [
+        'outdoor-1.jpg',
+        'outdoor-2.jpg',
+        'outdoor-3.jpg'
+      ],
+      coordinates: { x: 20, y: 85, width: 50, height: 10 }
     }
   ]
 };

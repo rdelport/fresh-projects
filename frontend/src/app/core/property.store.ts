@@ -15,4 +15,8 @@ export class PropertyStore {
   setSelectedRoom(room: Room) {
     this.selectedRoomSignal.set(room);
   }
+
+  clearSelectedRoom() {
+    this.selectedRoomSignal.set(null);
+  }
 }

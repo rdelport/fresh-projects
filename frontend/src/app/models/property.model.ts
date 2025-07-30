@@ -1,4 +1,5 @@
 export interface Room {
+  id: string;
   name: string;
   description: string;
   photos: string[];
@@ -8,11 +9,14 @@ export interface Room {
 export interface Property {
   title: string;
   description: string;
-  price: number;
+  price: string;
   address: string;
-  thumbnail: string;
-  propertySize: string;
+  image: string;
+  bedrooms: number;
+  bathrooms: number;
+  size: number;
   floorplanImage: string;
+  features: string[];
   rooms: Room[];
 }
 

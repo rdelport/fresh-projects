@@ -1,15 +1,20 @@
 import { Component } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { CardComponent } from "./card/card.component";
+import { HeroComponent } from "./hero/hero.component";
 import { FloorplanComponent } from "./floorplan/floorplan.component";
 import { RoomComponent } from "./room/room.component";
+import { FooterComponent } from "../shared/footer/footer.component";
 import { PropertyStore } from "../core/property.store";
 import { PropertyService } from "../core/property.service";
 
 @Component({
   selector: "app-property",
   standalone: true,
-  imports: [CommonModule, CardComponent, FloorplanComponent, RoomComponent],
+  imports: [CommonModule,
+            HeroComponent,
+            FloorplanComponent,
+            RoomComponent,
+            FooterComponent],
   templateUrl: "./property.component.html",
   styleUrls: ["./property.component.css"]
 })

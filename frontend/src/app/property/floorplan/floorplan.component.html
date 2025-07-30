@@ -1,12 +1,67 @@
-<div class="floorplan">
-  <img [src]="imageUrl" usemap="#roommap" alt="Floorplan" width="600" />
-  <map name="roommap">
-    <area *ngFor="let room of rooms"
-          [attr.coords]="getCoords(room)"
-          shape="rect"
-          [attr.alt]="room.name"
-          (mouseenter)="hoveredRoom.set(room.name)"
-          (mouseleave)="hoveredRoom.set(null)"
-          (click)="onClick(room)" />
-  </map>
-</div>
+<section class="bg-card py-16">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-foreground mb-4">Interactive Floor Plan</h2>
+      <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+        Click on any room to explore detailed photos and descriptions
+      </p>
+    </div>
+
+    <div class="max-w-4xl mx-auto">
+      <div class="relative inline-block w-full">
+        <img
+          [src]="imageUrl"
+          alt="Floor Plan"
+          class="w-full h-auto rounded-xl shadow-elegant"
+        />
+
+        @for (room of rooms; track room.id) {
+          <div
+            class="absolute cursor-pointer transition-all duration-300"
+            [ngClass]="{
+              'bg-primary/40 border-2 border-primary': selectedRoomId === room.id,
+              'bg-primary/20 border border-primary': hoveredRoom === room.id && selectedRoomId !== room.id,
+              'hover:bg-primary/10': hoveredRoom !== room.id && selectedRoomId !== room.id
+            }"
+            [ngStyle]="{
+              left: room.coordinates.x + '%',
+              top: room.coordinates.y + '%',
+              width: room.coordinates.width + '%',
+              height: room.coordinates.height + '%'
+            }"
+            (click)="onRoomClick(room)"
+            (mouseenter)="hoveredRoom = room.id"
+            (mouseleave)="hoveredRoom = null"
+            [title]="room.name"
+          >
+            <div class="absolute inset-0 flex items-center justify-center">
+              <span
+                class="text-xs font-semibold px-2 py-1 rounded transition-all"
+                [ngClass]="{
+                  'bg-primary text-primary-foreground':
+                    selectedRoomId === room.id || hoveredRoom === room.id,
+                  'bg-white/80 text-primary': selectedRoomId !== room.id && hoveredRoom !== room.id
+                }"
+              >
+                {{ room.name }}
+              </span>
+            </div>
+          </div>
+        }
+      </div>
+
+      <div class="mt-8 text-center">
+        @if (selectedRoomId) {
+          <p class="text-sm text-muted-foreground">
+            Currently viewing: {{ selectedRoomName }}
+          </p>
+        } @else {
+          <p class="text-sm text-muted-foreground">
+            Click on any room above to view details
+          </p>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+

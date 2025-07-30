@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, signal } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Room } from '../../models/property.model';
 import { CommonModule } from '@angular/common';
 
@@ -12,16 +12,23 @@ import { CommonModule } from '@angular/common';
 export class FloorplanComponent {
   @Input({ required: true }) rooms!: Room[];
   @Input({ required: true }) imageUrl!: string;
-  @Output() roomSelected = new EventEmitter<Room>();
+  @Output() selectedRoom = new EventEmitter<Room>();
 
-  hoveredRoom = signal<string | null>(null);
+  hoveredRoom: string | null = null;
+  selectedRoomId: string | null = null;
 
-  onClick(room: Room) {
-    this.roomSelected.emit(room);
+  onRoomClick(room: Room) {
+    this.selectedRoomId = room.id;
+    this.selectedRoom.emit(room);
   }
 
   getCoords(room: Room): string {
     const { x, y, width, height } = room.coordinates;
     return `${x}, ${y}, ${x + width}, ${y + height}`;
+  }
+
+  get selectedRoomName(): string | null {
+    const room = this.rooms.find(r => r.id === this.selectedRoomId);
+    return room ? room.name : null;
   }
 }

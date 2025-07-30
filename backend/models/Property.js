@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const roomSchema = new mongoose.Schema({
+    id: String,
     name: String,
     description: String,
     photos: [String],
@@ -15,11 +16,14 @@ const roomSchema = new mongoose.Schema({
 const propertySchema = new mongoose.Schema({
     title: String,
     description: String,
-    price: Number,
+    price: String,
     address: String,
-    thumbnail: String,
-    propertySize: String,
+    image: String,
+    bedrooms: Number,
+    bathrooms: Number,
+    size: String,
     floorplanImage: String,
+    features: [String],
     rooms: [roomSchema], 
 });
 

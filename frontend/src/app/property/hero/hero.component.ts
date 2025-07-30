@@ -1,14 +1,13 @@
 import { Component, Input } from '@angular/core';
-import { Property } from '../../models/property.model';
 import { CommonModule } from '@angular/common';
-
+import { Property } from '../../models/property.model';
 @Component({
   standalone: true,
-  selector: 'app-card',
+  selector: 'app-hero',
   imports: [CommonModule],
-  templateUrl: './card.component.html',
-  styleUrl: './card.component.css'
+  templateUrl: './hero.component.html',
+  styleUrl: './hero.component.css'
 })
-export class CardComponent {
+export class HeroComponent {
   @Input({ required: true }) property!: Property;
 }
